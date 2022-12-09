@@ -163,10 +163,11 @@ class TestUser:
         self, 
         client
     ):
-        response = client.delete(
-            f'/api/oauth2/revoke?refresh_token=all',
-            headers={
-                "Authorization": f'Bearer {self.access_tokens[0]}'
-            }
-        )
-        assert response.status_code == 200
+        for user in self.users:
+            response = client.delete(
+                f'/api/users/{user["id"]}',
+                headers={
+                    "Authorization": f'Bearer {self.access_tokens[0]}'
+                }
+            )
+            assert response.status_code == 200
