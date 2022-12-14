@@ -1,0 +1,6 @@
+services:
+  sample-oauth2-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: "host"

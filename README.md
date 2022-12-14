@@ -43,11 +43,19 @@ pytest -v
 ```
 * Running using Docker
 Note: Install docker first before executing these commands and also don't forget to create .env file
-```bash
-sudo docker build -t sample-oauth2-implementation-image .
-# --network="host" to connect to the local database setup
-sudo docker run -d --name sample-oauth2-implementation-container --network="host" sample-oauth2-implementation-image
-```
+    * Using Dockerfile
+    ```bash
+    sudo docker build -t sample-oauth2-implementation-image .
+    # --network="host" to connect to the local database setup
+    sudo docker run -d --name sample-oauth2-implementation-container --network="host" sample-oauth2-implementation-image
+    ```
+    * Using docker compose
+    ```bash
+    sudo docker compose up -d --build
+    # if want to to always rebuild without caching the files and requirements
+    # sudo docker compose build --no-cache
+    # sudo docker up -d 
+    ```
 
 * Setting up NGINX for proxy to docker app
 Note: Install nginx first before executing these instructions
@@ -99,7 +107,7 @@ Note: Install nginx first before executing these instructions
     
     * Copy the link below and paste it in the browser to see if your setup is running successfully
     ```text
-    desiredhostname.abc/docs
+    http://desiredhostname.abc/docs
     ```
 
 ## API Documentation
